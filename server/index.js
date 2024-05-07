@@ -11,7 +11,7 @@ const app = express();
 app.use(cookieParser());
 app.use(
   cors({
-    origin: [""],
+    origin: ["https://banao-frontend.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true,
   })
