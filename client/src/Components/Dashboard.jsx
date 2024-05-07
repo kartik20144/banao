@@ -9,7 +9,7 @@ const Dashboard = () => {
 
     useEffect(() => {
 
-    axios.get('http://localhost:3000/auth/verify')
+    axios.get('https://banao-api.vercel.app/auth/verify')
     .then(res => {
       console.log(res);
         if(res.data.status){
