@@ -19,7 +19,7 @@ const handleLogout = () => {
 
   return (
     <div>Home
-        <button><Link to='/dashboard'></Link>Dashboard</button>
+        <button><Link to='/dashboard'>Dashboard</Link></button>
         <br /> <br />
         <button onClick={handleLogout}>Logout</button>
     </div>

@@ -8,15 +8,18 @@ const Dashboard = () => {
     axios.defaults.withCredentials = true;
 
     useEffect(() => {
+
     axios.get('http://localhost:3000/auth/verify')
     .then(res => {
+      console.log(res);
         if(res.data.status){
-
+          
         }else{
+        
             navigate('/')
         }
     })
-    })
+    },[])
   return (
     <div>Dashboard</div>
   )

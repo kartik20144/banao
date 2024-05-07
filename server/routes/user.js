@@ -5,6 +5,7 @@ import { User } from "../models/User.js";
 import jwt from "jsonwebtoken";
 import nodemailer from "nodemailer";
 
+
 router.post("/signup", async (req, res) => {
   const { username, email, password } = req.body;
   const user = await User.findOne({ email });
@@ -38,7 +39,7 @@ router.post("/login", async (req, res) => {
   const token = jwt.sign({ username: user.username }, process.env.KEY, {
     expiresIn: "1h",
   });
-  res.cookie("token", { httpOnly: true, maxAge: 360000 });
+  res.cookie("token", token, { httpOnly: true, maxAge: 360000 });
   return res.json({ status: true, message: "login successfully" });
 });
 
@@ -97,6 +98,8 @@ router.post("/reset-password/:token", async (req, res) => {
 const verifyUser = async (req, res, next) => {
   try {
     const token = req.cookies.token;
+ 
+    
     if (!token) {
       return res.json({ status: false, message: "No token" });
     }
@@ -110,6 +113,8 @@ const verifyUser = async (req, res, next) => {
 router.get("/verify", verifyUser, (req, res) => {
   return res.json({ status: true, message: "Authorized" });
 });
+
+
 
 router.get("/logout", (req, res) => {
   res.clearCookie("token");
