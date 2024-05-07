@@ -13,7 +13,8 @@ app.use(cors({ origin: ["http://localhost:5173"], credentials: true }));
 app.use(express.json());
 app.use("/auth", UserRouter);
 
-mongoose.connect("mongodb://127.0.0.1:27017/authentication");
+mongoose.connect("mongodb+srv://kartikagarwal20144:Lu61VNdlCfnOES68@cluster0.sg1wbgq.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster0");
+
 
 app.listen(process.env.PORT, () => {
   console.log("Server is running.");
